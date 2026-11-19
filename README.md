@@ -5,45 +5,54 @@
 [![reward](https://make.fun/badge/news-image-20261119/jojosinkonstanor-collab/makefun-news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-One image that sums up the world's news of **Thursday, 19 November 2026** —
-a newspaper front page drawn entirely with Pillow (Python), so every word is
-sharp and exactly as written. No AI-generated text anywhere in the image.
+Thursday, 19 November 2026, on a single newspaper front page. The page
+is drawn entirely with Pillow in Python, so every headline, date line
+and caption is crisp, spelled exactly as written, and never smeared by
+an image generator. Six stories made the front page — the ones a reader
+who missed the day would most need to catch up on.
 
-## The six stories
+## What is on the page
 
-1. **Lead — Trilateral summit in Shenzhen:** Trump, Xi and Putin hold their
-   first-ever three-way summit — one hour in Shenzhen on nuclear arms, Iran
-   and Ukraine.
-2. **Culture — GTA VI:** launches after a 13-year wait; pre-orders hit
-   9.69 million units, worth $942 million, before launch day.
-3. **War — Gulf:** three oil tankers catch fire in the Strait of Hormuz;
-   Iran says they hit mines east of the strait as the US-Iran war widens.
-4. **Courts — The Hague:** the World Court rules on Myanmar's alleged
-   Rohingya genocide, in The Gambia's case lodged seven years ago.
-5. **Europe — Ukraine:** the EU proposes a €45 billion loan for Ukraine in
-   2027, covering two-thirds of Kyiv's €70 billion funding gap.
-6. **Space — NASA:** Voyager 1 reaches one light-day from Earth — NASA
-   confirms the 1977 probe is 16 billion miles out, the farthest any
-   human-made object has ever flown.
+- **Front page lead — a first in Shenzhen.** Trump, Xi and Putin sit
+  down together for the first time, for one hour, to talk nuclear
+  arms, Iran and Ukraine.
+- **Culture — the 13-year wait ends.** GTA VI launches worldwide at
+  midnight; 9.69 million pre-orders, worth $942 million, were already
+  in before launch day.
+- **War — fire in the Gulf.** Three oil tankers burn east of the
+  Strait of Hormuz after hitting mines, as the US-Iran war widens.
+- **Courts — verdict in The Hague.** The World Court rules on
+  Myanmar's alleged Rohingya genocide, in The Gambia's case from
+  seven years ago.
+- **Europe — a €45 billion loan.** The EU proposes the loan for
+  Ukraine in 2027, covering two-thirds of Kyiv's €70 billion gap.
+- **Space — one light-day out.** NASA confirms Voyager 1, launched
+  in 1977, is now 16 billion miles from Earth — farther than any
+  human-made object has ever flown.
 
-## How it works
+Each story gets a category tag, a headline and one line of context,
+with a flat geometric icon drawn in PIL. The masthead reads
+"THE WORLD IN ONE PICTURE" above the date line
+"THURSDAY, 19 NOVEMBER 2026".
 
-`main.py` (Python 3.13, standard library only) copies `asset/entry.png`
-to `$MAKEFUN_OUTPUT_DIR/entry.png` (default `/output`). The image is
-1024×1024 px, PNG, well under the 1 MiB limit, and every run writes
-byte-identical output. `draw.py` (kept out of the submitted snapshot's
-critical path; the PNG it produces is the shipped asset) renders the page
-with Pillow: masthead, date line, six panels with category tags, headlines,
-one line of context each, and flat geometric icons drawn with PIL shapes.
+## The entry program
 
-## Verify locally
+`main.py` (Python 3.13, standard library only) does one job: it reads
+`asset/entry.png`, checks the PNG magic bytes and the 1024x1024 size
+from the IHDR chunk, and writes those exact bytes to
+`$MAKEFUN_OUTPUT_DIR/entry.png` (default `/output`). It touches no
+network and re-checks the written file's size, so a short write fails
+loudly instead of shipping a broken image.
+
+Try it:
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 python3 -c "from PIL import Image; im = Image.open('out/entry.png'); print(im.size)"
 ```
 
-Run it twice and compare checksums — the bytes are identical.
+Run it twice and compare checksums — the bytes come out identical
+every time, because the input never changes.
 
 ---
 
