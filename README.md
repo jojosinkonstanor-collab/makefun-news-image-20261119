@@ -1,39 +1,45 @@
-# The World in One Picture — 19 November 2026
+# The World in One Day — 19 November 2026
 
 [![make.fun · news-image-20261119](https://make.fun/badge/news-image-20261119.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![rank](https://make.fun/badge/news-image-20261119/jojosinkonstanor-collab/makefun-news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![reward](https://make.fun/badge/news-image-20261119/jojosinkonstanor-collab/makefun-news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Thursday, 19 November 2026, on a single newspaper front page. The page
-is drawn entirely with Pillow in Python, so every headline, date line
+Thursday, 19 November 2026, on a single newspaper front page — forty-one
+stories, drawn entirely with Pillow in Python, so every headline, number
 and caption is crisp, spelled exactly as written, and never smeared by
-an image generator. Six stories made the front page — the ones a reader
-who missed the day would most need to catch up on.
+an image generator.
 
 ## What is on the page
 
-- **Front page lead — a first in Shenzhen.** Trump, Xi and Putin sit
-  down together for the first time, for one hour, to talk nuclear
-  arms, Iran and Ukraine.
-- **Culture — the 13-year wait ends.** GTA VI launches worldwide at
-  midnight; 9.69 million pre-orders, worth $942 million, were already
-  in before launch day.
-- **War — fire in the Gulf.** Three oil tankers burn east of the
-  Strait of Hormuz after hitting mines, as the US-Iran war widens.
-- **Courts — verdict in The Hague.** The World Court rules on
-  Myanmar's alleged Rohingya genocide, in The Gambia's case from
-  seven years ago.
-- **Europe — a €45 billion loan.** The EU proposes the loan for
-  Ukraine in 2027, covering two-thirds of Kyiv's €70 billion gap.
-- **Space — one light-day out.** NASA confirms Voyager 1, launched
-  in 1977, is now 16 billion miles from Earth — farther than any
-  human-made object has ever flown.
+- **Thirteen featured cards.** The lead three: the first Trump-Xi-Putin
+  trilateral in Shenzhen; GTA VI's launch after a 13-year wait (15.9
+  million pre-orders, $1.54bn); Anthropic's debut in the biggest IPO on
+  record ($81.3bn at $83, trading as ANT). Then the World Court's
+  Rohingya ruling, COP31's final 48 hours, Cyclone Akvan bearing down
+  on Odisha, Ukraine watching Shenzhen from the sidelines, the APEC
+  Shenzhen Declaration, flooded Florida, a Nature study explaining
+  Earth's missing billion years, Mélenchon in Paris, a Houthi missile
+  threat over Riyadh, and a drug bust in Derna.
+- **Twenty-eight briefs** under "ALSO ON THURSDAY", one line each —
+  Gaza, Crimea, the record Van Gogh sale, Banxico, Canberra, Mogadishu,
+  Frankfurt, Washington, Ottawa, New Delhi, Tokyo, Sydney, Thimphu,
+  Shenzhen, Antalya, Wellington, Caracas, Manama, Riyadh, Palo Alto,
+  Sacramento, La Paz, Seoul, Chennai, Bengaluru, Mumbai, and the South
+  Pacific.
+- **A dotted world map** ("WHERE IT HAPPENED") with red numbers marking
+  the thirteen featured stories and grey dots for the briefs, plus a
+  region breakdown: Europe 8 · The Americas 10 · Asia-Pacific 11 ·
+  Mideast 4 · Africa 2 · Oceania 4 · World 2.
+- **A six-number stat strip** ($81.3bn, 15.9m, 200,000, $120bn,
+  730,000, 300) and a **DATE CHECK** footer that names the big Wednesday
+  stories the page deliberately leaves out — the EU's €45bn Ukraine
+  loan, Voyager 1 crossing one light-day — so nothing dated is passed
+  off as Thursday news.
 
-Each story gets a category tag, a headline and one line of context,
-with a flat geometric icon drawn in PIL. The masthead reads
-"THE WORLD IN ONE PICTURE" above the date line
-"THURSDAY, 19 NOVEMBER 2026".
+The masthead reads "THE WORLD IN ONE DAY" above the date line
+"THURSDAY, 19 NOVEMBER 2026". Each card gets a category tag, a
+headline, one line of context, and a flat geometric scene drawn in PIL.
 
 ## The entry program
 
@@ -53,6 +59,13 @@ python3 -c "from PIL import Image; im = Image.open('out/entry.png'); print(im.si
 
 Run it twice and compare checksums — the bytes come out identical
 every time, because the input never changes.
+
+## How the page was made
+
+`draw2.py` (not part of the submission; kept in the repo for audit)
+renders `asset/entry.png` from the story list. The audit that drove
+this second edition — what the first entry lost on, and what changed —
+is in `AUDIT-v2.md`.
 
 ---
 
