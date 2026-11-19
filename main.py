@@ -50,9 +50,10 @@ def main():
     blob = SOURCE.read_bytes()
     if not blob:
         return fail(f"empty asset: {SOURCE}")
-    if read_png_size(blob) != EXPECTED_SIZE:
+    size = read_png_size(blob)
+    if size != EXPECTED_SIZE:
         return fail(
-            f"asset is {read_png_size(blob)[0]}x{read_png_size(blob)[1]}, "
+            f"asset is {size[0]}x{size[1]}, "
             f"expected {EXPECTED_SIZE[0]}x{EXPECTED_SIZE[1]}"
         )
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
